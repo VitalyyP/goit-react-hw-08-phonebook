@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import s from './Form.module.css';
-import { useFetchContactsQuery, useAddContactMutation } from '../../redux/slice';
+import { useFetchContactsQuery, useAddContactMutation } from '../../redux/contactsSlice';
 
 export default function Form() {
   const [addContactToBase, { isLoading }] = useAddContactMutation();

@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import Contact from '../Contact';
-import { useFetchContactsQuery } from '../../redux/slice';
+import { useFetchContactsQuery } from '../../redux/contactsSlice';
 
 export default function ContactList() {
   const { filter } = useSelector(state => state.contacts);

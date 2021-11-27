@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import s from './Contact.module.css';
 
-import { useDeleteContactMutation } from '../../redux/slice';
+import { useDeleteContactMutation } from '../../redux/contactsSlice';
 
 export default function Contact({ contact }) {
   const [deleteContact, { isLoading: isDeleting }] = useDeleteContactMutation();
