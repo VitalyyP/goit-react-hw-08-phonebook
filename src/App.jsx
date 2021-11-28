@@ -9,10 +9,21 @@ import { Login } from './pages/Login';
 import { Register } from './pages/Register';
 import { PublicRoute } from './routes/PublicRoute';
 import { PrivateRoute } from './routes/PrivateRoute';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { currentThunk, logoutThunk } from './redux/thunks';
 
 const isAuth = false;
 
 function App() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(currentThunk());
+  }, [dispatch]);
+
+  const handleLogout = () => {
+    dispatch(logoutThunk());
+  };
   return (
     <Container>
       <nav>
@@ -25,6 +36,11 @@ function App() {
           </li>
           <li>
             <Link to="/register">Register</Link>
+          </li>
+          <li>
+            <button type="button" onClick={handleLogout}>
+              Log out
+            </button>
           </li>
         </ul>
       </nav>
