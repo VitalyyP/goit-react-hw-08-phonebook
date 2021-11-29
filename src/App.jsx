@@ -52,11 +52,11 @@ function App() {
         </Routes>
       </main>
 
-      {/* //   <h1>Phonebook</h1>
-    //   <Form />
-    //   <h2 className={s.contactsTitle}>Contacts</h2>
-    //   <Filter />
-    //   <ContactList /> */}
+      <h1>Phonebook</h1>
+      <Form />
+      <h2 className={s.contactsTitle}>Contacts</h2>
+      <Filter />
+      <ContactList />
     </Container>
   );
 }

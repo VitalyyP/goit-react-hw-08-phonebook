@@ -1,5 +1,9 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
-import authReducer from './slice';
+import authReducer from './userSlice';
+import { contactsApi } from './contactsSlice';
+import { combineReducers } from 'redux';
+import { contactReducer, filterReducer } from './reducer';
+
 import {
   persistStore,
   persistReducer,
@@ -11,6 +15,7 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+import { connectAdvanced } from 'react-redux';
 
 const authPersistConfig = {
   key: 'authToken',
@@ -20,35 +25,26 @@ const authPersistConfig = {
 
 const authPersistReducer = persistReducer(authPersistConfig, authReducer);
 
+const contactsAllReducer = combineReducers({
+  items: contactReducer,
+  filter: filterReducer,
+});
+
 export const store = configureStore({
   reducer: {
     authPersistReducer,
+    contacts: contactsAllReducer,
+    [contactsApi.reducerPath]: contactsApi.reducer,
   },
   middleware: getDefaultMiddlaware =>
     getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }),
+    }).concat(contactsApi.middleware),
 });
 
 export const persistor = persistStore(store);
-
-// import { combineReducers } from 'redux';
-// import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
-// import { contactReducer, filterReducer } from './reducer';
-// import { contactsApi } from './contactsSlice';
-
-// import {
-//   persistStore,
-//   persistReducer,
-//   FLUSH,
-//   REHYDRATE,
-//   PAUSE,
-//   PERSIST,
-//   PURGE,
-//   REGISTER,
-// } from 'redux-persist';
 
 // const middleware = [
 //   ...getDefaultMiddleware({
@@ -58,11 +54,6 @@ export const persistor = persistStore(store);
 //   }),
 // ];
 
-// const contactsAllReducer = combineReducers({
-//   items: contactReducer,
-//   filter: filterReducer,
-// });
-
 // export const store = configureStore({
 //   reducer: {
 //     contacts: contactsAllReducer,
@@ -71,5 +62,3 @@ export const persistor = persistStore(store);
 //   middleware,
 //   devTools: process.env.NODE_ENV === 'development',
 // });
-
-// export const persistor = persistStore(store);

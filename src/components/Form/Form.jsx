@@ -8,6 +8,11 @@ export default function Form() {
   const [number, setNumber] = useState('');
   const { data } = useFetchContactsQuery();
 
+  const reset = () => {
+    setName('');
+    setNumber('');
+  };
+
   const addContact = obj => {
     if (data.some(contact => contact.name.toLowerCase() === obj.name.toLowerCase())) {
       alert(`You have already had ${obj.name} in your contacts`);
@@ -15,6 +20,7 @@ export default function Form() {
     }
 
     addContactToBase(obj);
+    reset();
   };
 
   const handleInputChange = event => {
