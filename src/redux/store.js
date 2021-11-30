@@ -45,20 +45,3 @@ export const store = configureStore({
 });
 
 export const persistor = persistStore(store);
-
-// const middleware = [
-//   ...getDefaultMiddleware({
-//     serializableCheck: {
-//       ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-//     },
-//   }),
-// ];
-
-// export const store = configureStore({
-//   reducer: {
-//     contacts: contactsAllReducer,
-//     [contactsApi.reducerPath]: contactsApi.reducer,
-//   },
-//   middleware,
-//   devTools: process.env.NODE_ENV === 'development',
-// });

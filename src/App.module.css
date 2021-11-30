@@ -1,3 +1,12 @@
+.navList {
+  display: flex;
+  list-style: none;
+}
+
+.navItem {
+  padding: 20px;
+}
+
 .contactsTitle {
   margin-top: 40px;
   margin-bottom: 0;

@@ -9,15 +9,15 @@ const authSlice = createSlice({
     error: null,
     isLoading: false,
     isAuth: false,
-    myProp: 'Hello',
+    // myProp: 'Hello',
   },
   reducers: {
-    renameProp: (state, action) => {
-      return {
-        ...state,
-        myProp: action.payload,
-      };
-    },
+    // renameProp: (state, action) => {
+    //   return {
+    //     ...state,
+    //     myProp: action.payload,
+    //   };
+    // },
   },
   extraReducers: {
     [signupThunk.pending](state, action) {
@@ -77,7 +77,7 @@ const authSlice = createSlice({
         ...state,
         isLoading: false,
         user: action.payload,
-        isAuth: true,
+        // isAuth: true,
       };
     },
     [currentThunk.rejected](state, action) {
@@ -113,6 +113,6 @@ const authSlice = createSlice({
     },
   },
 });
-
+const { name } = authSlice;
 export const { renameProp } = authSlice.actions;
 export default authSlice.reducer;
