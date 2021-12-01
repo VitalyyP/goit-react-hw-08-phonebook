@@ -21,18 +21,15 @@ import { currentThunk, logoutThunk } from './redux/thunks';
 function App() {
   const dispatch = useDispatch();
   const { isAuth } = useSelector(store => store.authPersistReducer);
-  console.log(isAuth);
-  useEffect(() => {
-    dispatch(currentThunk());
-  }, [dispatch]);
+  // console.log(isAuth);
+  // useEffect(() => {
+  //   dispatch(currentThunk());
+  // }, [dispatch]);
 
-  const handleLogout = () => {
-    dispatch(logoutThunk());
-  };
   return (
     <Container>
       <AppBar isAuth={isAuth} />
-      <nav>
+      {/* <nav>
         <ul className={s.navList}>
           <li className={s.navItem}>
             <Link to="/">Home</Link>
@@ -40,28 +37,41 @@ function App() {
           <li>
             <Link to="/contacts">
               Contacts
-              {/* <h1>They are your contacts!!!</h1>
+              <h1>They are your contacts!!!</h1>
               <button type="button" onClick={handleLogout}>
                 Log out
-              </button> */}
+              </button>
             </Link>
           </li>
           <li>
-            <Link exact="true" to="/login">
-              Login
-            </Link>
+            <Link to="/login">Login</Link>
           </li>
           <li>
             <Link to="/register">Register</Link>
           </li>
         </ul>
-      </nav>
+      </nav> */}
       <main>
         <Routes>
-          <Route path="/" element={<PublicRoute isAuth={isAuth} component={Home} />} />;
-          <Route path="/login" element={<PublicRoute isAuth={isAuth} component={Login} />} />;
-          <Route path="/register" element={<PublicRoute isAuth={isAuth} component={Register} />} />;
-          <Route path="/contacts" element={<PrivateRoute isAuth={isAuth} component={Contacts} />} />
+          <Route
+            path="/"
+            element={<PublicRoute isAuth={isAuth} component={Home} />}
+          />
+          ;
+          <Route
+            path="/login"
+            element={<PublicRoute isAuth={isAuth} component={Login} />}
+          />
+          ;
+          <Route
+            path="/register"
+            element={<PublicRoute isAuth={isAuth} component={Register} />}
+          />
+          ;
+          <Route
+            path="/contacts"
+            element={<PrivateRoute isAuth={isAuth} component={Contacts} />}
+          />
           ;
         </Routes>
       </main>

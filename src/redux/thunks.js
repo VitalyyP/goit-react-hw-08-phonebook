@@ -6,42 +6,48 @@ const userLogin = '/users/login';
 const userLogout = '/users/logout';
 const userCurrent = '/users/current';
 
-export const signupThunk = createAsyncThunk('users/signup', async (user, { refectWithValue }) => {
-  try {
-    const response = await fetch(BASE_USER_URL + userSingup, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(user),
-    });
-    const data = await response.json();
-    console.log(data);
-    return data; // {user: {name: '', email: ''}, token: ''}
-  } catch (err) {
-    isRejectedWithValue({ error: err.message });
-  }
-});
+export const signupThunk = createAsyncThunk(
+  'users/signup',
+  async (user, { refectWithValue }) => {
+    try {
+      const response = await fetch(BASE_USER_URL + userSingup, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(user),
+      });
+      const data = await response.json();
+      console.log(data);
+      return data; // {user: {name: '', email: ''}, token: ''}
+    } catch (err) {
+      isRejectedWithValue({ error: err.message });
+    }
+  },
+);
 
 // vvvv@vvvv.vvv
 //   vvvvvvvv
 
-export const loginThunk = createAsyncThunk('users/login', async (user, { refectWithValue }) => {
-  try {
-    const response = await fetch(BASE_USER_URL + userLogin, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(user),
-    });
-    const data = await response.json();
-    console.log(data);
-    return data; // {user: {name: '', email: ''}, token: ''}
-  } catch (err) {
-    isRejectedWithValue({ error: err.message });
-  }
-});
+export const loginThunk = createAsyncThunk(
+  'users/login',
+  async (user, { refectWithValue }) => {
+    try {
+      const response = await fetch(BASE_USER_URL + userLogin, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(user),
+      });
+      const data = await response.json();
+      console.log('loginThunk:', data);
+      return data; // {user: {name: '', email: ''}, token: ''}
+    } catch (err) {
+      isRejectedWithValue({ error: err.message });
+    }
+  },
+);
 
 export const currentThunk = createAsyncThunk(
   'users/current',

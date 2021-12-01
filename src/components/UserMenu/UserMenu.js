@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 // import { authSelectors, authOperations } from '../../redux/auth';
 import defaultAvatar from './default-avatar.png';
+import { currentThunk, logoutThunk } from '../../redux/thunks';
 
 const styles = {
   container: {
@@ -18,20 +19,21 @@ const styles = {
 
 export default function UserMenu() {
   const dispatch = useDispatch();
-  // const name = useSelector(authSelectors.getUserName);
+  const name = useSelector(store => store.authPersistReducer.user.name);
   const avatar = defaultAvatar;
+
+  const handleLogout = () => {
+    dispatch(logoutThunk());
+  };
 
   return (
     <div style={styles.container}>
       <img src={avatar} alt="" width="32" style={styles.avatar} />
       <span style={styles.name}>
         Добро пожаловать,
-        {/* {name} */}
+        {name}
       </span>
-      <button
-        type="button"
-        // onClisk={() => dispatch(authOperations.logOut())}
-      >
+      <button type="button" onClisk={handleLogout}>
         Выйти
       </button>
     </div>
