@@ -54,7 +54,8 @@ export const currentThunk = createAsyncThunk(
   async (_, { refectWithValue, getState }) => {
     const state = getState();
     const token = state.authPersistReducer.token;
-    if (!token) return;
+    // console.log('token:', token);
+    // if (!token) return;
     try {
       const response = await fetch(BASE_USER_URL + userCurrent, {
         method: 'GET',
@@ -64,7 +65,7 @@ export const currentThunk = createAsyncThunk(
         },
       });
       const data = await response.json();
-      console.log(data);
+      console.log('currentThunk data:', data);
       return data; // {name: '', email: ''}
     } catch (err) {
       isRejectedWithValue({ error: err.message });

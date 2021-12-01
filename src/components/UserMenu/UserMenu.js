@@ -19,7 +19,7 @@ const styles = {
 
 export default function UserMenu() {
   const dispatch = useDispatch();
-  const name = useSelector(store => store.authPersistReducer.user.name);
+  const name = useSelector(store => store?.authPersistReducer?.user?.name);
   const avatar = defaultAvatar;
 
   const handleLogout = () => {
@@ -33,7 +33,7 @@ export default function UserMenu() {
         Добро пожаловать,
         {name}
       </span>
-      <button type="button" onClisk={handleLogout}>
+      <button type="button" onClick={handleLogout}>
         Выйти
       </button>
     </div>

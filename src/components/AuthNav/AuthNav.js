@@ -4,11 +4,17 @@ import s from './AuthNav.module.css';
 export default function AuthNav() {
   return (
     <div>
-      <NavLink to="/register" className={s.link} activeclassname={s.activeLink}>
+      <NavLink
+        to="/register"
+        className={navData => (navData.isActive ? s.activeLink : s.link)}
+      >
         Регистрация
       </NavLink>
 
-      <NavLink to="/login" className={s.link} activeclassname={s.activeLink}>
+      <NavLink
+        to="/login"
+        className={navData => (navData.isActive ? s.activeLink : s.link)}
+      >
         Логин
       </NavLink>
     </div>

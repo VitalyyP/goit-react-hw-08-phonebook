@@ -22,9 +22,9 @@ function App() {
   const dispatch = useDispatch();
   const { isAuth } = useSelector(store => store.authPersistReducer);
   // console.log(isAuth);
-  // useEffect(() => {
-  //   dispatch(currentThunk());
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(currentThunk());
+  }, [dispatch]);
 
   return (
     <Container>

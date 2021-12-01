@@ -3,11 +3,18 @@ import s from './Navigation.module.css';
 
 const Navigation = () => (
   <nav>
-    <NavLink to="/" className={s.link} activeclassname={s.activeLink}>
+    <NavLink
+      to="/"
+      className={navData => (navData.isActive ? s.activeLink : s.link)}
+    >
       Главная
     </NavLink>
 
-    <NavLink to="/contacts" className={s.link} activeclassname={s.activeLink}>
+    <NavLink
+      to="/contacts"
+      c
+      className={navData => (navData.isActive ? s.activeLink : s.link)}
+    >
       Контакты
     </NavLink>
   </nav>

@@ -77,7 +77,7 @@ const authSlice = createSlice({
         ...state,
         isLoading: false,
         user: action.payload,
-        // isAuth: true,
+        isAuth: true,
       };
     },
     [currentThunk.rejected](state, action) {
