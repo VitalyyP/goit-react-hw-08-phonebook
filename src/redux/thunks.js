@@ -55,7 +55,8 @@ export const currentThunk = createAsyncThunk(
     const state = getState();
     const token = state.authPersistReducer.token;
     // console.log('token:', token);
-    // if (!token) return;
+    if (token === null) {
+      return refectWithValue();
     try {
       const response = await fetch(BASE_USER_URL + userCurrent, {
         method: 'GET',
