@@ -41,7 +41,6 @@ export const loginThunk = createAsyncThunk(
         body: JSON.stringify(user),
       });
       const data = await response.json();
-      console.log('loginThunk:', data);
       return data; // {user: {name: '', email: ''}, token: ''}
     } catch (err) {
       isRejectedWithValue({ error: err.message });
@@ -54,8 +53,7 @@ export const currentThunk = createAsyncThunk(
   async (_, { refectWithValue, getState }) => {
     const state = getState();
     const token = state.authPersistReducer.token;
-    // console.log('token:', token);
-    // if (!token) return;
+    if (!token) return refectWithValue();
     try {
       const response = await fetch(BASE_USER_URL + userCurrent, {
         method: 'GET',
@@ -65,7 +63,6 @@ export const currentThunk = createAsyncThunk(
         },
       });
       const data = await response.json();
-      console.log('currentThunk data:', data);
       return data; // {name: '', email: ''}
     } catch (err) {
       isRejectedWithValue({ error: err.message });
@@ -87,7 +84,6 @@ export const logoutThunk = createAsyncThunk(
         },
       });
       const data = await response.json();
-      console.log(data);
       return data; // {name: '', email: ''}
     } catch (err) {
       isRejectedWithValue({ error: err.message });

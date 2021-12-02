@@ -5,12 +5,13 @@ import { useFetchContactsQuery } from '../../redux/contactsSlice';
 export default function ContactList() {
   const { filter } = useSelector(state => state.contacts);
   const { data } = useFetchContactsQuery();
-  console.log('data: ', data);
 
   const getVisibleContacts = (allContacts, filter) => {
     const normalizedFilter = filter.toLowerCase();
     const visibleContacts = allContacts
-      ? allContacts.filter(contact => contact.name.toLowerCase().includes(normalizedFilter))
+      ? allContacts.filter(contact =>
+          contact.name.toLowerCase().includes(normalizedFilter),
+        )
       : [];
     return visibleContacts;
   };

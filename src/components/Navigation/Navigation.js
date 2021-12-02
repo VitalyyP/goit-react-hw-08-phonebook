@@ -12,7 +12,6 @@ const Navigation = () => (
 
     <NavLink
       to="/contacts"
-      c
       className={navData => (navData.isActive ? s.activeLink : s.link)}
     >
       Контакты

@@ -17,11 +17,11 @@ import Container from '../components/Container';
 export function Contacts() {
   return (
     <Container>
-      <h1>Phonebook need remove comments</h1>
-      {/* <Form />
+      <h1>Phonebook</h1>
+      <Form />
       <h2>Contacts</h2>
       <Filter />
-      <ContactList /> */}
+      <ContactList />
     </Container>
   );
 }
