@@ -3,18 +3,35 @@
   text-align: center;
 }
 
-.input,
-button {
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  margin: 0 auto;
+}
+
+.input {
   display: block;
-  margin: 10px auto;
+}
+/* .input, */
+.button {
+  display: block;
+  margin: 20px auto;
+  min-width: 60px;
 }
 
 .p {
   font-size: 14px;
   text-align: center;
+  margin-bottom: 20px;
 }
 
 .title_left {
   font-size: 3.2vmin;
   text-align: left;
+}
+
+.inputField {
+  background-color: rgb(239, 239, 239);
+  padding: 0px;
 }

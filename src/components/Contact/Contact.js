@@ -12,6 +12,13 @@ export default function Contact({ contact }) {
       <span style={{ textAlign: 'right' }}>{contact.phone}</span>{' '}
       <button
         className={s.button}
+        // onClick={() => deleteContact(contact.id)}
+        disabled
+      >
+        Edit
+      </button>
+      <button
+        className={s.button}
         onClick={() => deleteContact(contact.id)}
         disabled={isDeleting}
       >

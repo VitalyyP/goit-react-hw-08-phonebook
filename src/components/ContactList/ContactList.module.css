@@ -1,4 +1,6 @@
 .title_left {
+  margin-bottom: 0;
+  margin-top: 40px;
   font-size: 3.2vmin;
   text-align: left;
 }
