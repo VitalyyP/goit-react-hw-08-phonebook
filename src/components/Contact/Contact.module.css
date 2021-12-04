@@ -1,5 +1,10 @@
 .item {
-  display: flex;
-  justify-content: space-between;
-  padding: 5px 0px;
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding-top: 10px;
+}
+
+.button {
+  margin: 0 auto;
 }

@@ -1,4 +1,14 @@
+.form {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr 1fr 1fr;
+  border-bottom: 2px solid #2a363b;
+}
 .button {
   display: block;
-  margin-top: 20px;
+  margin-top: 19px;
+}
+
+.p {
+  margin-top: 0;
 }

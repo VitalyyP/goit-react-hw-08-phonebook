@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import defaultAvatar from './default-avatar-3.png';
-import { currentThunk, logoutThunk } from '../../redux/thunks';
+import { logoutThunk } from '../../redux/thunks';
 
 const styles = {
   container: {
@@ -29,11 +29,11 @@ export default function UserMenu() {
     <div style={styles.container}>
       <img src={avatar} alt="" width="32" style={styles.avatar} />
       <span style={styles.name}>
-        Добро пожаловать,
+        Welcome,
         {name}
       </span>
       <button type="button" onClick={handleLogout}>
-        Выйти
+        Log out
       </button>
     </div>
   );

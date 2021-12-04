@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { loginThunk } from '../redux/thunks';
+import s from './Pages.module.css';
 
 export function Login() {
   const [email, setEmail] = useState('');
@@ -33,18 +34,30 @@ export function Login() {
 
   return (
     <>
-      <h2>Login form</h2>
+      <h2 className={s.title}>Please login</h2>
+      <p className={s.p}>
+        or <a href="/register">Join now</a>
+      </p>
       <form onSubmit={handleSubmit}>
-        <input type="mail" name="email" value={email} placeholder="email" onChange={handleChange} />
-        <br />
+        <input
+          type="mail"
+          className={s.input}
+          name="email"
+          value={email}
+          placeholder="email"
+          onChange={handleChange}
+        />
         <input
           type="password"
+          className={s.input}
           name="password"
           value={password}
           placeholder="password"
           onChange={handleChange}
         />
-        <button type="submit">Singup</button>
+        <button type="submit" className={s.button}>
+          Sing in
+        </button>
       </form>
     </>
   );

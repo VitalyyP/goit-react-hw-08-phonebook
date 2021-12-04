@@ -1,7 +1,10 @@
+import s from './Pages.module.css';
 export function Home() {
   return (
     <>
-      <h1>Welcome. You can keep your phonebook contacts here but you need to login before</h1>;
+      <p className={s.title}>Welcome.</p>
+      <p className={s.title}>You can keep your phonebook contacts here.</p>
+      <p className={s.title}>But you need to login before.</p>;
     </>
   );
 }

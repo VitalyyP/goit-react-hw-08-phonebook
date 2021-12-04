@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux';
 import Contact from '../Contact';
 import { useFetchContactsQuery } from '../../redux/contactsSlice';
+import s from './ContactList.module.css';
 
 export default function ContactList() {
   const { filter } = useSelector(state => state.contacts);
@@ -17,10 +18,13 @@ export default function ContactList() {
   };
 
   return (
-    <ul>
-      {getVisibleContacts(data, filter).map(contact => (
-        <Contact key={contact.id} contact={contact} />
-      ))}
-    </ul>
+    <>
+      <h3 className={s.title_left}>There are all your contacts</h3>
+      <ul>
+        {getVisibleContacts(data, filter).map(contact => (
+          <Contact key={contact.id} contact={contact} />
+        ))}
+      </ul>
+    </>
   );
 }

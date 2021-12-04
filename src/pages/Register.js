@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { signupThunk } from '../redux/thunks';
+import s from './Pages.module.css';
 
 export function Register() {
   const [name, setName] = useState('');
@@ -38,20 +39,35 @@ export function Register() {
 
   return (
     <>
-      <h2>Register form</h2>
+      <h2 className={s.title}>Join now</h2>
       <form onSubmit={handleSubmit}>
-        <input type="text" name="name" value={name} placeholder="name" onChange={handleChange} />
-        <br />
-        <input type="mail" name="email" value={email} placeholder="email" onChange={handleChange} />
-        <br />
+        <input
+          type="text"
+          className={s.input}
+          name="name"
+          value={name}
+          placeholder="name"
+          onChange={handleChange}
+        />
+        <input
+          type="mail"
+          className={s.input}
+          name="email"
+          value={email}
+          placeholder="email"
+          onChange={handleChange}
+        />
         <input
           type="password"
+          className={s.input}
           name="password"
           value={password}
           placeholder="password"
           onChange={handleChange}
         />
-        <button type="submit">Singup</button>
+        <button type="submit" className={s.button}>
+          Sing up
+        </button>
       </form>
     </>
   );

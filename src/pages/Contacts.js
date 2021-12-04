@@ -1,27 +1,16 @@
-// import { Link, Routes, Route } from 'react-router-dom';
-// import s from './App.module.css';
 import Form from '../components/Form';
 import Filter from '../components/Filter';
 import ContactList from '../components/ContactList/ContactList';
-import Container from '../components/Container';
-// import { Home } from './pages/Home';
-// import { Login } from './pages/Login';
-// import { Register } from './pages/Register';
-// import { PublicRoute } from './routes/PublicRoute';
-// import { PrivateRoute } from './routes/PrivateRoute';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { useEffect } from 'react';
-// import { currentThunk, logoutThunk } from './redux/thunks';
-// import UserMenu, { userMenu } from './components/UserMenu/UserMenu';
+import s from './Pages.module.css';
 
 export function Contacts() {
   return (
-    <Container>
-      <h1>Phonebook</h1>
+    <>
+      <h1 className={s.title_left}>You can add a contact here</h1>
       <Form />
-      <h2>Contacts</h2>
+      <h2 className={s.title_left}>You can find your conctacts here</h2>
       <Filter />
       <ContactList />
-    </Container>
+    </>
   );
 }

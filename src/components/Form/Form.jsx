@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import s from './Form.module.css';
-import { useFetchContactsQuery, useAddContactMutation } from '../../redux/contactsSlice';
+import {
+  useFetchContactsQuery,
+  useAddContactMutation,
+} from '../../redux/contactsSlice';
 
 export default function Form() {
   const [addContactToBase, { isLoading }] = useAddContactMutation();
@@ -14,7 +17,11 @@ export default function Form() {
   };
 
   const addContact = obj => {
-    if (data.some(contact => contact.name.toLowerCase() === obj.name.toLowerCase())) {
+    if (
+      data.some(
+        contact => contact.name.toLowerCase() === obj.name.toLowerCase(),
+      )
+    ) {
       alert(`You have already had ${obj.name} in your contacts`);
       return;
     }
@@ -47,9 +54,9 @@ export default function Form() {
 
   return (
     <>
-      <form onSubmit={handleSubmite}>
+      <form className={s.form} onSubmit={handleSubmite}>
         <label>
-          <p>Name</p>
+          <p className={s.p}>Name</p>
           <input
             type="text"
             value={name}
@@ -60,7 +67,7 @@ export default function Form() {
           />
         </label>
         <label>
-          <p>Number</p>
+          <p className={s.p}>Number</p>
           <input
             type="tel"
             value={number}
