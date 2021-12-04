@@ -2,6 +2,7 @@ import { useDispatch } from 'react-redux';
 import { filterContactAction } from '../../redux/actions';
 import s from './Filter.module.css';
 import { TextField } from '@material-ui/core';
+
 export default function Filter() {
   const dispatch = useDispatch();
 
@@ -20,7 +21,6 @@ export default function Filter() {
           variant="outlined"
           type="text"
           name="filter"
-          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
           required
           onChange={filterContacts}
           size="small"
@@ -31,16 +31,5 @@ export default function Filter() {
         />
       </label>
     </div>
-    // <div className={s.filter}>
-    //   <label>
-    //     <p>Find contacts by name:</p>
-    //     <input
-    //       type="text"
-    //       name="filter"
-    //       pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-    //       onChange={filterContacts}
-    //     />
-    //   </label>
-    // </div>
   );
 }

@@ -32,6 +32,7 @@ const authSlice = createSlice({
             isAuth: true,
           };
     },
+
     [signupThunk.rejected](state, action) {
       return {
         ...state,
