@@ -18,7 +18,6 @@ export const signupThunk = createAsyncThunk(
         body: JSON.stringify(user),
       });
       const data = await response.json();
-      console.log(data);
       return data; // {user: {name: '', email: ''}, token: ''}
     } catch (err) {
       isRejectedWithValue({ error: err.message });

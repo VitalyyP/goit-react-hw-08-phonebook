@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { loginThunk } from '../redux/thunks';
 import s from './Pages.module.css';
+import { TextField } from '@material-ui/core';
 
 export function Login() {
   const [email, setEmail] = useState('');
@@ -38,22 +39,40 @@ export function Login() {
       <p className={s.p}>
         or <a href="/register">Join now</a>
       </p>
-      <form onSubmit={handleSubmit}>
-        <input
+      <form className={s.form} onSubmit={handleSubmit}>
+        <TextField
+          fullWidth
           type="mail"
           className={s.input}
+          helperText="Please enter your email"
+          label="Email"
+          variant="outlined"
+          required
           name="email"
           value={email}
-          placeholder="email"
           onChange={handleChange}
+          size="small"
+          margin="normal"
+          InputProps={{
+            className: s.inputField,
+          }}
         />
-        <input
+        <TextField
+          fullWidth
           type="password"
           className={s.input}
+          helperText="Please enter your password"
+          label="Password"
+          variant="outlined"
+          required
           name="password"
           value={password}
-          placeholder="password"
           onChange={handleChange}
+          size="small"
+          margin="normal"
+          InputProps={{
+            className: s.inputField,
+          }}
         />
         <button type="submit" className={s.button}>
           Sing in

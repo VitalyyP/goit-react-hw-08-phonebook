@@ -31,7 +31,7 @@ export default function UserMenu() {
       <img src={avatar} alt="" width="32" style={styles.avatar} />
       <span style={styles.name}>
         Welcome,
-        {name}
+        {` ${name}`}
       </span>
       <button type="button" onClick={handleLogout}>
         Log out

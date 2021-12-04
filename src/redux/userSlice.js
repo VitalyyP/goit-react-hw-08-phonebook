@@ -19,13 +19,18 @@ const authSlice = createSlice({
       };
     },
     [signupThunk.fulfilled](state, action) {
-      return {
-        ...state,
-        isLoading: false,
-        user: action.payload.user,
-        token: action.payload.token,
-        isAuth: true,
-      };
+      return !action.payload.user
+        ? {
+            ...state,
+            isLoading: false,
+          }
+        : {
+            ...state,
+            isLoading: false,
+            user: action.payload.user,
+            token: action.payload.token,
+            isAuth: true,
+          };
     },
     [signupThunk.rejected](state, action) {
       return {
