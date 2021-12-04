@@ -6,7 +6,7 @@ import s from './AppBar.module.css';
 export default function AppBar({ isAuth }) {
   return (
     <header className={s.header}>
-      <Navigation />
+      {!isAuth && <Navigation />}
       {isAuth ? <UserMenu /> : <AuthNav />}
     </header>
   );

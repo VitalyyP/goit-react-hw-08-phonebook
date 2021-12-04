@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import defaultAvatar from './default-avatar-3.png';
 import { logoutThunk } from '../../redux/thunks';
+import s from './UserMene.Module.css';
 
 const styles = {
   container: {
@@ -26,7 +27,7 @@ export default function UserMenu() {
   };
 
   return (
-    <div style={styles.container}>
+    <div style={styles.container} className={s.UserMenu}>
       <img src={avatar} alt="" width="32" style={styles.avatar} />
       <span style={styles.name}>
         Welcome,

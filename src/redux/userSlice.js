@@ -9,6 +9,7 @@ const authSlice = createSlice({
     error: null,
     isLoading: false,
     isAuth: false,
+    isRefreshingUserData: false,
   },
   extraReducers: {
     [signupThunk.pending](state, action) {
@@ -66,12 +67,14 @@ const authSlice = createSlice({
       return {
         ...state,
         isLoading: true,
+        isRefreshingUserData: true,
       };
     },
     [currentThunk.fulfilled](state, action) {
       return {
         ...state,
         isLoading: false,
+        isRefreshingUserData: false,
         user: action.payload,
         isAuth: true,
       };
@@ -80,6 +83,7 @@ const authSlice = createSlice({
       return {
         ...state,
         isLoading: false,
+        isRefreshingUserData: false,
         error: action.payload,
         isAuth: false,
       };

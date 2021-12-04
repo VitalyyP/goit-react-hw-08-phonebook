@@ -14,39 +14,44 @@ import { currentThunk } from './redux/thunks';
 
 function App() {
   const dispatch = useDispatch();
-  const { isAuth } = useSelector(store => store.authPersistReducer);
+  const { isAuth, isRefreshingUserData } = useSelector(
+    store => store.authPersistReducer,
+  );
+
   useEffect(() => {
     dispatch(currentThunk());
   }, [dispatch]);
 
   return (
-    <Container>
-      <AppBar isAuth={isAuth} />
-      <main>
-        <Routes>
-          <Route
-            path="/"
-            element={<PublicRoute isAuth={isAuth} component={Home} />}
-          />
-          ;
-          <Route
-            path="/login"
-            element={<PublicRoute isAuth={isAuth} component={Login} />}
-          />
-          ;
-          <Route
-            path="/register"
-            element={<PublicRoute isAuth={isAuth} component={Register} />}
-          />
-          ;
-          <Route
-            path="/contacts"
-            element={<PrivateRoute isAuth={isAuth} component={Contacts} />}
-          />
-          ;
-        </Routes>
-      </main>
-    </Container>
+    !isRefreshingUserData && (
+      <Container>
+        <AppBar isAuth={isAuth} />
+        <main>
+          <Routes>
+            <Route
+              path="/"
+              element={<PublicRoute isAuth={isAuth} component={Home} />}
+            />
+            ;
+            <Route
+              path="/login"
+              element={<PublicRoute isAuth={isAuth} component={Login} />}
+            />
+            ;
+            <Route
+              path="/register"
+              element={<PublicRoute isAuth={isAuth} component={Register} />}
+            />
+            ;
+            <Route
+              path="/contacts"
+              element={<PrivateRoute isAuth={isAuth} component={Contacts} />}
+            />
+            ;
+          </Routes>
+        </main>
+      </Container>
+    )
   );
 }
 
