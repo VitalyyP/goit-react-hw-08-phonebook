@@ -57,15 +57,6 @@ export default function Form() {
     <>
       <form className={s.form} onSubmit={handleSubmit}>
         <label>
-          {/* <p className={s.p}>Name</p> */}
-          {/* <input
-            type="text"
-            value={name}
-            name="name"
-            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-            required
-            onChange={handleInputChange}
-          /> */}
           <TextField
             className={s.input}
             helperText="Please enter a name"
@@ -85,7 +76,6 @@ export default function Form() {
           />
         </label>
         <label>
-          {/* <p className={s.p}>Number</p> */}
           <TextField
             className={s.input}
             helperText="Please enter a number"
@@ -104,14 +94,6 @@ export default function Form() {
             }}
             inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
           />
-          {/* <input
-            type="tel"
-            value={number}
-            name="number"
-            pattern="^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$"
-            onChange={handleInputChange}
-            required
-          /> */}
         </label>
         <button type="submit" className={s.button} disabled={isLoading}>
           Add contact
