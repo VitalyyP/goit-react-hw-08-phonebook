@@ -1,21 +1,69 @@
 import PropTypes from 'prop-types';
 import s from './Contact.module.css';
 // import { useState } from 'react';
-
+// import { TextField } from '@material-ui/core';
+// import Form from '../Form';
 import { useDeleteContactMutation } from '../../redux/contactsSlice';
+// import {
+//   useFetchContactsQuery,
+//   useEditContactMutation,
+// } from '../../redux/contactsSlice';
 
 export default function Contact({ contact }) {
+  // const [editContactToBase] = useEditContactMutation();
   // const [isEdit, setIsEdit] = useState(false);
+  // const [name, setName] = useState(contact.name);
+  // const [number, setNumber] = useState(contact.phone);
   const [deleteContact, { isLoading: isDeleting }] = useDeleteContactMutation();
+  // const { data } = useFetchContactsQuery();
+
+  // const editContact = (id, name, number) => {
+  //   setIsEdit(true);
+  // };
+
+  // const editContactByBase = obj => {
+  //   if (
+  //     data.some(
+  //       contact => contact.name.toLowerCase() === obj.name.toLowerCase(),
+  //     )
+  //   ) {
+  //     alert(`You have already had ${obj.name} in your contacts`);
+  //     return;
+  //   }
+
+  //   editContactToBase(obj);
+  //   setIsEdit(false);
+  // };
+
+  // const handleInputChange = event => {
+  //   const { name, value } = event.currentTarget;
+  //   switch (name) {
+  //     case 'name':
+  //       setName(value);
+  //       break;
+  //     case 'number':
+  //       setNumber(value);
+  //       break;
+  //     default:
+  //   }
+  // };
+
+  // const makeCorrectFormat = number =>
+  //   `${number.substr(0, 3)}-${number.substr(3, 3)}-${number.substr(6)}`;
+
+  // const handleSubmit = event => {
+  //   event.preventDefault();
+  //   let phoneNumber = makeCorrectFormat(number);
+  //   editContactByBase({ name: name, phone: phoneNumber });
+  // };
 
   return (
     <li className={s.item}>
-      {/* {isEdit === contact.id ? (
+      {/* {isEdit ? (
         <form className={s.form} onSubmit={handleSubmit}>
           <label>
             <TextField
               className={s.input}
-              helperText="Please enter a name"
               label="Name"
               variant="outlined"
               type="text"
@@ -34,7 +82,6 @@ export default function Contact({ contact }) {
           <label>
             <TextField
               className={s.input}
-              helperText="Please enter a number"
               label="Number"
               variant="outlined"
               type="tel"
@@ -51,8 +98,8 @@ export default function Contact({ contact }) {
               inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
             />
           </label>
-          <button type="submit" className={s.button} disabled={isLoading}>
-            Add contact
+          <button type="submit" className={s.button}>
+            Save
           </button>
         </form>
       ) : (
@@ -61,8 +108,9 @@ export default function Contact({ contact }) {
       <span style={{ textAlign: 'right' }}>{contact.phone}</span>{' '}
       <button
         className={s.button}
-        // onClick={() => deleteContact(contact.id)}
-        disabled
+        // onClick={() =>
+        //   editContact(contact.id, contact.name, contact.number)
+        // }
       >
         Edit
       </button>
