@@ -1,65 +1,66 @@
 import PropTypes from 'prop-types';
 import s from './Contact.module.css';
-// import { useState } from 'react';
-// import { TextField } from '@material-ui/core';
+import { useState } from 'react';
+import { TextField } from '@material-ui/core';
 // import Form from '../Form';
 import { useDeleteContactMutation } from '../../redux/contactsSlice';
-// import {
-//   useFetchContactsQuery,
-//   useEditContactMutation,
-// } from '../../redux/contactsSlice';
+import {
+  useFetchContactsQuery,
+  useEditContactMutation,
+} from '../../redux/contactsSlice';
 
 export default function Contact({ contact }) {
-  // const [editContactToBase] = useEditContactMutation();
-  // const [isEdit, setIsEdit] = useState(false);
-  // const [name, setName] = useState(contact.name);
-  // const [number, setNumber] = useState(contact.phone);
+  const [editContactToBase] = useEditContactMutation();
+  const [isEdit, setIsEdit] = useState(false);
+  const [id, setId] = useState(contact.id);
+  const [name, setName] = useState(contact.name);
+  const [number, setNumber] = useState(contact.phone);
   const [deleteContact, { isLoading: isDeleting }] = useDeleteContactMutation();
-  // const { data } = useFetchContactsQuery();
+  const { data } = useFetchContactsQuery();
 
-  // const editContact = (id, name, number) => {
-  //   setIsEdit(true);
-  // };
+  const editContact = (id, name, number) => {
+    setIsEdit(true);
+  };
 
-  // const editContactByBase = obj => {
-  //   if (
-  //     data.some(
-  //       contact => contact.name.toLowerCase() === obj.name.toLowerCase(),
-  //     )
-  //   ) {
-  //     alert(`You have already had ${obj.name} in your contacts`);
-  //     return;
-  //   }
+  const editContactByBase = obj => {
+    if (
+      data.some(
+        contact => contact.name.toLowerCase() === obj.name.toLowerCase(),
+      )
+    ) {
+      alert(`You have already had ${obj.name} in your contacts`);
+      return;
+    }
+    console.log({ id, name, number });
+    editContactToBase({ id, name, number });
+    setIsEdit(false);
+  };
 
-  //   editContactToBase(obj);
-  //   setIsEdit(false);
-  // };
+  const handleInputChange = event => {
+    const { name, value } = event.currentTarget;
+    switch (name) {
+      case 'name':
+        setName(value);
+        break;
+      case 'number':
+        setNumber(value);
+        break;
+      default:
+    }
+  };
 
-  // const handleInputChange = event => {
-  //   const { name, value } = event.currentTarget;
-  //   switch (name) {
-  //     case 'name':
-  //       setName(value);
-  //       break;
-  //     case 'number':
-  //       setNumber(value);
-  //       break;
-  //     default:
-  //   }
-  // };
+  const makeCorrectFormat = number =>
+    `${number.substr(0, 3)}-${number.substr(3, 3)}-${number.substr(6)}`;
 
-  // const makeCorrectFormat = number =>
-  //   `${number.substr(0, 3)}-${number.substr(3, 3)}-${number.substr(6)}`;
-
-  // const handleSubmit = event => {
-  //   event.preventDefault();
-  //   let phoneNumber = makeCorrectFormat(number);
-  //   editContactByBase({ name: name, phone: phoneNumber });
-  // };
+  const handleSubmit = event => {
+    event.preventDefault();
+    let phoneNumber = makeCorrectFormat(number);
+    editContactByBase({ name: name, phone: phoneNumber });
+  };
 
   return (
     <li className={s.item}>
-      {/* {isEdit ? (
+      {isEdit ? (
         <form className={s.form} onSubmit={handleSubmit}>
           <label>
             <TextField
@@ -103,26 +104,26 @@ export default function Contact({ contact }) {
           </button>
         </form>
       ) : (
-        <> */}
-      {contact.name}:{' '}
-      <span style={{ textAlign: 'right' }}>{contact.phone}</span>{' '}
-      <button
-        className={s.button}
-        // onClick={() =>
-        //   editContact(contact.id, contact.name, contact.number)
-        // }
-      >
-        Edit
-      </button>
-      <button
-        className={s.button}
-        onClick={() => deleteContact(contact.id)}
-        disabled={isDeleting}
-      >
-        Delete
-      </button>
-      {/* </> */}
-      {/* )} */}
+        <>
+          {contact.name}:{' '}
+          <span style={{ textAlign: 'right' }}>{contact.phone}</span>{' '}
+          <button
+            className={s.button}
+            onClick={() =>
+              editContact(contact.id, contact.name, contact.number)
+            }
+          >
+            Edit
+          </button>
+          <button
+            className={s.button}
+            onClick={() => deleteContact(contact.id)}
+            disabled={isDeleting}
+          >
+            Delete
+          </button>
+        </>
+      )}
     </li>
   );
 }
