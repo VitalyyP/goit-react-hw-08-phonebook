@@ -9,3 +9,21 @@
   min-width: 55px;
   margin: 0 0 0 auto;
 }
+
+.form {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 5fr 5fr 2fr;
+  border-bottom: 2px solid #2a363b;
+}
+/* .button {
+  display: block;
+  height: 22px;
+  margin-top: 27px;
+  min-width: 55px;
+} */
+
+.inputField {
+  background-color: rgb(239, 239, 239);
+  padding: 0px;
+}

@@ -59,6 +59,8 @@ export default function Contact({ contact }) {
   };
 
   return (
+  
+    {isEdit ? <li> : <li className={s.item}>}
     <li className={s.item}>
       {isEdit ? (
         <form className={s.form} onSubmit={handleSubmit}>
@@ -102,8 +104,13 @@ export default function Contact({ contact }) {
           <button type="submit" className={s.button}>
             Save
           </button>
+          <button type="" className={s.button}>
+            Cancel
+          </button>
         </form>
-      ) : (
+      )
+        :
+        (
         <>
           {contact.name}:{' '}
           <span style={{ textAlign: 'right' }}>{contact.phone}</span>{' '}
@@ -123,7 +130,8 @@ export default function Contact({ contact }) {
             Delete
           </button>
         </>
-      )}
+        )
+      }
     </li>
   );
 }
